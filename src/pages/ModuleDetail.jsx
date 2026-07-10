@@ -12,7 +12,6 @@ const moduleData = {
   description: 'Pelajari komponen dan langkah-langkah instalasi tiang listrik Tegangan Menengah (TM).',
   duration: '45 Menit',
   image: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
-  arUrl: 'https://ar-viewer-pln.vercel.app/trafo-tm',
   steps: [
     {
       title: 'Pendahuluan',
@@ -75,6 +74,9 @@ const ModuleDetail = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const data = moduleData;
+  // Mengarah ke aplikasi AR gabungan di /ar.html, dihitung dari domain
+  // tempat aplikasi ini di-deploy (bukan lagi link placeholder).
+  const arUrl = `${window.location.origin}/ar.html`;
   const totalSteps = data.steps.length;
   const progressPercentage = Math.round(((currentStep + 1) / totalSteps) * 100);
   const isLastStep = currentStep === totalSteps - 1;
@@ -201,7 +203,7 @@ const ModuleDetail = () => {
 
             <div className="qr-container">
               <QRCode
-                value={data.arUrl}
+                value={arUrl}
                 size={180}
                 bgColor="#ffffff"
                 fgColor="#003B5C"
@@ -211,7 +213,7 @@ const ModuleDetail = () => {
 
             <div className="qr-fallback">
               <span>Atau buka tautan berikut di HP Anda:</span>
-              <a href={data.arUrl} target="_blank" rel="noopener noreferrer">{data.arUrl}</a>
+              <a href={arUrl} target="_blank" rel="noopener noreferrer">{arUrl}</a>
             </div>
           </div>
 

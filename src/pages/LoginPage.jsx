@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Eye,
   EyeOff,
-  CreditCard,
   HelpCircle,
   Award,
 } from 'lucide-react';
@@ -49,7 +48,7 @@ const LoginPage = () => {
     // Simulate login delay
     setTimeout(() => {
       setLoading(false);
-      navigate('/dashboard');
+      navigate(role === 'admin' ? '/admin/dashboard' : '/dashboard');
     }, 1000);
   };
 
@@ -181,15 +180,6 @@ const LoginPage = () => {
                     <ArrowRight size={18} />
                   </>
                 )}
-              </button>
-
-              <div className="login-divider">
-                <span>ATAU MASUK DENGAN</span>
-              </div>
-
-              <button type="button" className="btn btn-outline login-alt-btn">
-                <CreditCard size={18} />
-                <span>Kartu Pegawai (NFC)</span>
               </button>
             </form>
 
